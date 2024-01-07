@@ -6,7 +6,10 @@ import { Preferences } from '@capacitor/preferences';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PhotoService {
+
+public photos: UserPhoto[] = [];
 
   constructor() { }
 
@@ -17,6 +20,17 @@ public async addNewToGallery(){
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100
-    })
+    });
+
+    this.photos.unshift({
+      filePath: "soon...",
+      webViewPath: caputrePhoto.webPath!
+    });
   }
 }
+
+
+export interface UserPhoto{
+  filePath: string,
+  webViewPath?: string
+};
